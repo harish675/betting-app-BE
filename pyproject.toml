@@ -1,0 +1,30 @@
+[tool.ruff]
+# Set the maximum allowed line length (PEP 8 suggests 79, Black uses 88)
+line-length = 88
+target-version = "py310"  # Adjust to your Python version
+
+# Enable all available rules
+select = ["ALL"]
+
+# Optionally, ignore specific rules if they don't suit your project
+# Example: ignore line length enforcement from pycodestyle if needed
+# ignore = ["E501"]
+
+# Enable autofix for common issues
+fix = true
+show-fixes = true
+
+# Exclude files/folders (optional)
+exclude = [
+    ".git",
+    "__pycache__",
+    "build",
+    "dist",
+    ".venv",
+    "migrations",
+]
+
+[tool.ruff.format]
+quote-style = "double"    # Use double quotes for strings
+indent-style = "space"    # Use spaces, as per PEP 8
+line-ending = "auto"      # Automatically use correct OS line ending
