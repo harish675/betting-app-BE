@@ -1,6 +1,8 @@
 import logging
-from sqlmodel import SQLModel, Session, create_engine
+
 from sqlalchemy.exc import OperationalError
+from sqlmodel import Session, SQLModel, create_engine
+
 from ..core.config import settings
 
 # Configure logging
@@ -16,13 +18,14 @@ if not database_url:
 try:
     engine = create_engine(
         settings.DATABASE_URI,
-        echo=True  # Set to False in production
+        echo=True,  # Set to False in production
     )
     logger.info("✅ PostgreSQL database engine created successfully.")
 except OperationalError as e:
     logger.error("❌ Failed to create database engine.")
     logger.exception(e)
     raise
+
 
 # Create all tables
 def create_db_and_tables():
@@ -33,6 +36,7 @@ def create_db_and_tables():
         logger.error("❌ Failed to create tables.")
         logger.exception(e)
         raise
+
 
 # Dependency for session
 def get_session():
