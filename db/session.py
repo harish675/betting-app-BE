@@ -2,6 +2,7 @@ import logging
 
 from sqlalchemy.exc import OperationalError
 from sqlmodel import Session, SQLModel, create_engine
+import sqlmodel
 
 from ..core.config import settings
 
