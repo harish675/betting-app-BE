@@ -48,15 +48,6 @@ def user_login(payload:LoginRequest,session:Session = Depends(get_session)):
     """
     return auth_service.user_login(payload.model_dump(),session)
 
-# @router.get("/me")
-# def current_user(request:Request):
-#     """
-#     Get the current logged-in user.
-#     """
-#     authorization = request.headers.get("Authorization")
-#     return auth_service.get_current_user(authorization)
-
-
 @router.get("/users/me/")
-async def read_users_me(request:Request,session:Session = Depends(get_session)):
-    return auth_service.get_current_user(request,session)
+async def read_users_me(request:Request,deb_session:Session = Depends(get_session)):
+       return request.state.user

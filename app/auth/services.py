@@ -167,7 +167,7 @@ class AuthService:
         
         # Placeholder for actual user authentication logic
         
-    async def get_current_user(self,request,session,token: Annotated[str, Depends(oauth2_scheme)]):
+    async def get_current_user(self,token:str,db_session):
         credentials_exception = HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Could not validate credentials",
@@ -181,8 +181,7 @@ class AuthService:
             token_data = TokenData(username=username)
         except InvalidTokenError:
             raise credentials_exception
-        # user = get_user(fake_users_db, username=token_data.username)
-        user = self.db_operations.read_one(table=User, query=User.username == token_data.username ,session=session)
+        user = self.db_operations.read_one(table=User, query=User.username == token_data.username ,session=db_session)
         if user is None:
             raise credentials_exception
         return user

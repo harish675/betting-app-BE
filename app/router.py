@@ -2,7 +2,7 @@ from fastapi import APIRouter ,Depends
 from .users.routes import router as user_router
 from .auth.routes import router as auth_router
 from .auth.routes import user_router as auth_user_router
-from ..core.middleware import authentication
+from ..core.middleware.middleware import authentication
 router = APIRouter()
 
 @router.get("/health")

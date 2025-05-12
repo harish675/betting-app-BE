@@ -20,12 +20,10 @@ class DBOperation:
             session.close()
 
     def read(self, table, query,session):
-        # Implement the logic to read records from the database
          result = session.query(table).filter(query).all()
          return result
     
     def read_one(self, table, query, session):
-    # Use .first() to return the first matching record or None
         result = session.query(table).filter(query).first()
         return result
     
