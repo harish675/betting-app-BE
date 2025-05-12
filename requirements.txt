@@ -1,4 +1,9 @@
+alembic==1.15.2
 fastapi==0.115.12
 psycopg2-binary=2.9.10
+passlib==1.7.4
+pyjwt==2.10.1
 sqlmodel==0.0.24
-ruff-0.11.9
+twilio==9.6.0
+redis==6.0.0
+ruff==0.11.9

@@ -10,6 +10,4 @@ app = FastAPI()
 
 db_session = Annotated[Session, Depends(get_session)]
 
-# app.include_router(router, prefix="/api/v1", tags=["v1"] ,dependencies=[db_session])
-
-app.include_router(router, prefix="/api/v2", tags=["v2"])
+app.include_router(router, prefix="/api")
